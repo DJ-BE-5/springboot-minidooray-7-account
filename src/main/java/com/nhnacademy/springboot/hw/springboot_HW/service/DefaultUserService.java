@@ -28,7 +28,7 @@ public class DefaultUserService implements UserService{
 
     @Override
     public User createUser(User user) {
-        User newUser = new User(user.getId(), user.getPw(), user.getEmail(), user.getUserAdmin(), user.getStatus());
+        User newUser = new User(user.getId(), user.getPw(), user.getEmail());
         return userRepository.save(newUser);
     }
 
@@ -46,5 +46,12 @@ public class DefaultUserService implements UserService{
     @Override
     public void deleteUser(String id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean matches(String id, String password) {
+        return Optional.ofNullable(getUser(id))
+                .map(user -> user.getPassword().equals(password))
+                .orElse(false);
     }
 }

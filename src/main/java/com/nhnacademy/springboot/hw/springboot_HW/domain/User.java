@@ -31,5 +31,22 @@ public class User {
     @Column(name="user_status")
     private String status;
 
+    public User(String id, String pw, String email) {
+        this.id = id;
+        this.pw = pw;
+        this.email = email;
+    }
 
+
+    public String getId() {
+        return id;
+    }
+
+    public String getPw() {
+        return pw;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }

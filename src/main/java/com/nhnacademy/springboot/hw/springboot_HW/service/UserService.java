@@ -17,6 +17,5 @@ public interface UserService {
 
     void deleteUser(String id);
 
-
-
+    boolean matches(String id, String pwd);
 }
